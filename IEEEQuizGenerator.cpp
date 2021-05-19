@@ -15,7 +15,7 @@ void generateQuiz(size_t* amount,std::string saveFilePath){
 	std::normal_distribution<double> dist(-30.0	,30.0);
 
 	outputFileStream << "*** IEEE 変換練習問題 *** \n\n\n";
-	for(unsigned int i;i<*amount;i++){
+	for(unsigned int i=1;i<=*amount;i++){
 		std::sprintf(
 				quizBody,
 				"\nQuiz %d: %.2fを変換してください。\n\n\n		",
