@@ -5,7 +5,6 @@
 #include <cstdlib>
 #include <cmath>
 
-#include "Eratosthenes.h"
 
 void generateQuiz(size_t* amount,std::string saveFilePath){
   std::ofstream outputFileStream(saveFilePath);
@@ -20,40 +19,14 @@ void generateQuiz(size_t* amount,std::string saveFilePath){
   outputFileStream << "*** IEEE 変換練習問題 *** \n\n\n";
   
   double rndDouble;
-  bool isMinus;
 
-  nori::Eratosthenes primeChecker;
-  std::vector<int> primes;
-  int denominator;
 
   for(unsigned int i=1;i<=*amount;i++){
 
-    while(true){
-      rndDouble=dist(engine);
-      if(rndDouble<0){
-        rndDouble=-rndDouble;
-        isMinus=true;
-      }
-      denominator=((rndDouble-(int)rndDouble)*std::pow(10,std::to_string(rndDouble).length()-2));
-      denominator=static_cast<int>(denominator);
-      denominator/=100;
-
-      primeChecker.setN(denominator);
-      primeChecker.Start();
-      primes=primeChecker.getPrimeList();
-
-      std::erase_if(primes,[=](int p){return p==2 || p==5;});
-      if(primes.size()==0){// もし2か5以外のものがなけらばループをぬける。
-        break;
-      }
-    }
-    if(isMinus){
-      rndDouble=-rndDouble;
-      isMinus=false;
-    }
+		rndDouble=dist(engine);
     std::sprintf(
         quizBody,
-        "\nQuiz %d: %lfを変換してください。\n\n\n		",
+        "\nQuiz %d: %.2fを変換してください。\n\n\n		",
         i,
         rndDouble);
     outputFileStream << quizBody;
