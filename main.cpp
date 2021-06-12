@@ -47,7 +47,11 @@ void generateQuiz(size_t* amount,std::string saveFilePath){
             isInfinitieDouble = (bool)logDouble - std::floor(logDouble);
         }
         isInfinitieDouble=true;
-
+        
+        if(rndDouble==0.f){
+            i--;
+            continue;
+        }
         //負の値に復元
         if(isMinus){
             rndDouble = -rndDouble;
@@ -58,6 +62,8 @@ void generateQuiz(size_t* amount,std::string saveFilePath){
                 "\nQuiz %d: %.2fを変換してください。\n\n\n		",
                 i,
                 rndDouble);
+
+        outputFileStream.flush();
         outputFileStream << quizBody;
     }
 }
