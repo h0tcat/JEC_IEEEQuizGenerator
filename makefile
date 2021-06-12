@@ -1,6 +1,7 @@
-CC=g++ --static -O3 --std=c++2a
+CC=g++ --static -O3 --std=c++2a -lm -lboost_system
+
 PGNAME=IEEEQuizGenerator
-OBJS=main.o Eratosthenes.o
+OBJS=main.o Fraction.o
 
 $(PGNAME): $(OBJS)
 	$(CC) -o $@ $^ 
