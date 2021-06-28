@@ -1,0 +1,13 @@
+CC=x86_64-w64-mingw32-g++ --static -O3 --std=c++2a -lm -lboost_system -fexec-charset=CP932
+
+PGNAME=IEEEQuizGenerator
+OBJS=main.o Fraction.o
+
+$(PGNAME): $(OBJS)
+	$(CC) -o $@ $^ 
+.cpp.o:
+	$(CC) -c -o $@ $<
+
+.PHONY: clean
+clean:
+	rm -f $(PGNAME) $(OBJS)
